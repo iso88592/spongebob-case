@@ -14,4 +14,8 @@ for ((i = 0; i < length; i++)); do
   fi
   result="${result}${char}"
 done
-echo -n "${result}" | xclip -selection clipboard
+if [[ $1 == "--clipboard" ]]; then
+  echo -n "${result}" | xclip -selection clipboard
+else
+  xdotool type "${result}"
+fi
